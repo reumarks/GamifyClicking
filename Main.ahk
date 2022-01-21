@@ -65,6 +65,7 @@ DllCall( "gdi32.dll\SetStretchBltMode", "uint", hdc_frame, "int", 3 )
 
 loop, {
     if(gamestate = 0){
+        DllCall("ShowCursor", "Int", 0)
         MouseGetPos x, y
         Gui, Show 
         Gui, 2:Show
@@ -104,6 +105,7 @@ loop, {
         clickPointY := In(y-Zy-6,0,A_ScreenHeight-2*Zy) + (crosshairY + 32) / zoom
         Send {Click %clickPointX% %clickPointY%}
         gamestate := -1
+        DllCall("ShowCursor", "Int", 1)
     }
 }
 
@@ -114,6 +116,7 @@ return
 
 ESC::
 GuiClose:
+   DllCall("ShowCursor", "Int", 1)
    DllCall("gdi32.dll\DeleteDC", UInt,hdc_frame )
    DllCall("gdi32.dll\DeleteDC", UInt,hdd_frame )
 ExitApp
