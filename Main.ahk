@@ -85,7 +85,7 @@ loop, {
         }
         crosshairY += crosshairSY
         sleep 10
-        Gui, 3: show, x%crosshairX% y%crosshairY% w64 h64, dodger
+        Gui, 3: show, x%crosshairX% y%crosshairY% w100 h100, dodger
     }else if(gamestate = 2){
         if(crosshairX + 64 > A_ScreenWidth){
             crosshairSX *= -1
@@ -95,7 +95,7 @@ loop, {
         }
         crosshairX += crosshairSX
         sleep 10
-        Gui, 3: show, x%crosshairX% y%crosshairY% w64 h64, dodger
+        Gui, 3: show, x%crosshairX% y%crosshairY% w100 h100, dodger
     }else if(gamestate = 3){
         WinSet Transparent, 0, Magnifier
         Gui, 3:Hide 
