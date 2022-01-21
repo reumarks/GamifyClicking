@@ -18,12 +18,10 @@ OnExit GuiClose
 
 var := "https://raw.githubusercontent.com/reumarks/GamifyClicking/main/crosshair.png"
 
-zoom = 3
+zoom = 4
 gamestate := -1
-Screen_X = %A_ScreenWidth%
-Screen_Y = %A_ScreenHeight%
-Rx := Screen_X/2
-Ry := Screen_Y/2
+Rx := A_ScreenWidth/2
+Ry := A_ScreenHeight/2
 Zx := Rx/zoom
 Zy := Ry/zoom
 
@@ -31,6 +29,8 @@ width := 200
 height := 200
 crosshairX := 0
 crosshairY := 0
+crosshairSX := 30
+crosshairSY := 30
 
 Gui +AlwaysOnTop +Resize +ToolWindow
 Gui Show, % "w" 2*Rx " h" 2*Ry " x0 y0", Magnifier
@@ -76,11 +76,23 @@ loop, {
         crosshairY := 0
         gamestate := 1
     }else if(gamestate = 1){
-        crosshairY += 7
+        if(crosshairY + 64 > A_ScreenHeight){
+            crosshairSY *= -1
+        }
+        if(crosshairY < 0){
+            crosshairSY *= -1
+        }
+        crosshairY += crosshairSY
         sleep 10
         Gui, 3: show, x%crosshairX% y%crosshairY% w64 h64, dodger
     }else if(gamestate = 2){
-        crosshairX += 10
+        if(crosshairX + 64 > A_ScreenWidth){
+            crosshairSX *= -1
+        }
+        if(crosshairX < 0){
+            crosshairSX *= -1
+        }
+        crosshairX += crosshairSX
         sleep 10
         Gui, 3: show, x%crosshairX% y%crosshairY% w64 h64, dodger
     }else if(gamestate = 3){
