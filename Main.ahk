@@ -114,7 +114,7 @@ RButton::
     gamestate++
 return
 
-ESC::
+#ESC::
 GuiClose:
    DllCall("ShowCursor", "Int", 1)
    DllCall("gdi32.dll\DeleteDC", UInt,hdc_frame )
