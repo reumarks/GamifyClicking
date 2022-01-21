@@ -29,8 +29,8 @@ width := 200
 height := 200
 crosshairX := 0
 crosshairY := 0
-crosshairSX := 30
-crosshairSY := 30
+crosshairSX := 20
+crosshairSY := 20
 
 Gui +AlwaysOnTop +Resize +ToolWindow
 Gui Show, % "w" 2*Rx " h" 2*Ry " x0 y0", Magnifier
@@ -61,7 +61,7 @@ Gui, Hide
 
 hdd_frame := DllCall("GetDC", UInt, PrintSourceID)
 hdc_frame := DllCall("GetDC", UInt, MagnifierID)
-DllCall( "gdi32.dll\SetStretchBltMode", "uint", hdc_frame, "int", 3 )
+DllCall( "gdi32.dll\SetStretchBltMode", "uint", hdc_frame, "int", 1 )
 
 loop, {
     if(gamestate = 0){
