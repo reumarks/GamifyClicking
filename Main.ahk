@@ -87,10 +87,10 @@ loop, {
         sleep 10
         Gui, 3: show, x%crosshairX% y%crosshairY% w100 h100, dodger
     }else if(gamestate = 2){
-        if(crosshairX + 64 > A_ScreenWidth){
+        if(crosshairX > A_ScreenWidth){
             crosshairSX *= -1
         }
-        if(crosshairX < 0){
+        if(crosshairX -  < 0){
             crosshairSX *= -1
         }
         crosshairX += crosshairSX
